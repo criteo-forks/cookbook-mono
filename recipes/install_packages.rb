@@ -28,5 +28,7 @@ elsif platform_family?('rhel')
     baseurl node['mono']['yum_repository']
     gpgkey node['mono']['yum_repository_key']
   end
-  package "mono-complete"
+  package "mono-complete" do
+    version node['mono']['version'] if !node['mono']['version'].nil?
+  end
 end
